@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Framework">
+      <UniqueIdentifier>{0eb01e33-694f-47b2-9e07-e935e46ba235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Framework">
+      <UniqueIdentifier>{2fe7cdbe-8ce2-4407-a8d7-1e9dee24a961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Ulit">
+      <UniqueIdentifier>{b6dbb8f8-fa34-414f-a166-73e91a47b713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Ulit">
+      <UniqueIdentifier>{d7a064b8-0954-49d6-8940-ff13e431e954}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseStateMachine.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeCounter.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="LanguageExtend.cpp">
+      <Filter>源文件\Ulit</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>源文件\Ulit</Filter>
+    </ClCompile>
+    <ClCompile Include="Ulit.cpp">
+      <Filter>源文件\Ulit</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBase.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="json11.cpp">
+      <Filter>源文件\Ulit</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonUlit.cpp">
+      <Filter>源文件\Ulit</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageQueue.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Handler.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>源文件\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPanelState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UIControl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QLearning.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseStateMachine.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCounter.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="LanguageExtend.h">
+      <Filter>头文件\Ulit</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>头文件\Ulit</Filter>
+    </ClInclude>
+    <ClInclude Include="Ulit.h">
+      <Filter>头文件\Ulit</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBase.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="json11.hpp">
+      <Filter>头文件\Ulit</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonUlit.h">
+      <Filter>头文件\Ulit</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageQueue.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Handler.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>头文件\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPanelState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UIControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QLearning.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="FlappyBird.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FlappyBird.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
