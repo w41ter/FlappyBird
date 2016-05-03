@@ -2,7 +2,6 @@
 #include "GameState.h"
 
 #include "Graphics.h"
-
 #include "Animation.h"
 #include "Sprite.h"
 #include "Ulit.h"
@@ -13,6 +12,7 @@
 #include "StateMachine.h"
 #include "QLearning.h"
 #include "constant.h"
+#include "ThreadPool.h"
 
 using games::KeywordEvent;
 
@@ -25,6 +25,15 @@ namespace games
         double use = (now - last) / 1000;
         last = now;
         return use;
+    }
+
+    void GameState::PlaySound(Music *music)
+    {
+        MusicParam MP;
+        MP.ID = music->GetID();
+        MP.StartPosition = 0;
+        MP.Play = true;
+        g_MusicMessageQueue.push(MP);
     }
 
     GameState::GameState()
@@ -43,6 +52,18 @@ namespace games
     {
         Graphics::Instance().DestroyFontObject(tipsFont);
         Graphics::Instance().DestroyFontObject(scoreFont);
+
+        //通知子线程退出
+        MusicParam MP;
+        MP.Exit = true;
+        g_MusicMessageQueue.push(MP);
+        WaitForSingleObject(g_hThreadForMusic, INFINITE);		//等待子线程退出
+
+        //delete music_die;
+        //delete music_hit;
+        //delete music_wing;
+        //delete music_point;
+        //delete pMusicManager;
     }
 
     GameState & GameState::instance()
@@ -54,6 +75,23 @@ namespace games
     void GameState::initialize()
     {
         std::wstring &path = GetAppPath();
+
+        std::wstring soundDie = path + L"Resource\\sounds\\die.wav";
+        std::wstring soundHit = path + L"Resource\\Sounds\\hit.wav";
+        std::wstring soundWing = path + L"Resource\\sounds\\wing.wav";
+        std::wstring soundPoint = path + L"Resource\\sounds\\point.wav";
+
+        pMusicManager = new MusicManager();//初始化音乐管理对象
+        music_die = new Music(soundDie);
+        music_hit = new Music(soundHit);
+        music_wing = new Music(soundWing);
+        music_point = new Music(soundPoint);
+        pMusicManager->AddMusic(music_die);
+        pMusicManager->AddMusic(music_hit);
+        pMusicManager->AddMusic(music_wing);
+        pMusicManager->AddMusic(music_point);
+        g_hThreadForMusic = (HANDLE)_beginthreadex(NULL, 0, 
+            pMusicManager->ThreadForPlayMusic, NULL, 0, NULL);	//创建线程
 
         // 初始化素材部分
         imgBackground = path + L"Resource\\background.png";
@@ -206,7 +244,7 @@ namespace games
                 GetBirdState(h_dis, v_dis, vg_dis);
                 if (collisionResult)
                     ai->run(h_dis, v_dis, vg_dis, 0);
-                else //if (h_dis < MS_STAGEMOVESPEED * MS_PIPECREATETIME)
+                else 
                     ai->run(h_dis, v_dis, vg_dis, 1);
             }
 
@@ -214,11 +252,14 @@ namespace games
             {
             case COLLISIONRESULT_TOP_PIPE:
             case COLLISIONRESULT_BOTTOM_PIPE:
+                PlaySound(music_hit);
+                PlaySound(music_die);
                 gameState = GAMESTATE_DIYING;
                 break;
             case COLLISIONRESULT_GROUND:
-                 gameState = GAMESTATE_DIED;
-                 Died();
+                PlaySound(music_hit);
+                gameState = GAMESTATE_DIED;
+                Died();
                 break;
             }
             break;
@@ -240,6 +281,7 @@ namespace games
             }
             else
             {
+                PlaySound(music_hit);
                 UpdateBird(ElapsedTime);
             }
             break;
@@ -303,6 +345,7 @@ namespace games
             {
                 if (!keyDown)
                 {
+                    PlaySound(music_wing);
                     birdV = -MS_BIRDJUMPV;
                     keyDown = true;
                 }
@@ -664,6 +707,7 @@ namespace games
     void GameState::PassPipe()
     {
         score++;
+        PlaySound(music_point);
     }
 
     void GameState::GetBirdState(float & horizontal, float & vertical, float & ground_distance)

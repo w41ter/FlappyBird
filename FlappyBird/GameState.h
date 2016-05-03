@@ -3,8 +3,11 @@
 #include <memory>
 #include "Graphics.h"
 #include "BaseStateMachine.h"
+#include "MusicManager.h"
 
 class QLearning;
+
+template<typename Type> class ThreadPool;
 
 namespace games
 {
@@ -85,6 +88,8 @@ namespace games
         void PassPipe();
 
         void GetBirdState(float &horizontal, float &vertical, float &ground_distance);
+
+        void PlaySound(Music *music);
     private:
         std::wstring imgBackground;
         std::wstring imgGround;
@@ -131,6 +136,12 @@ namespace games
 
         D2D1_RECT_F getReadImageSize;
         D2D1_RECT_F gameOverImageSize;
+
+        Music *music_die;
+        Music *music_hit;
+        Music *music_wing;
+        Music *music_point;
+        MusicManager * pMusicManager;	//音乐管理对象指针
     };
 
 }
